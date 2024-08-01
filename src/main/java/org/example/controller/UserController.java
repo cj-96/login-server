@@ -1,8 +1,9 @@
-package controller;
+package org.example.controller;
 
-import dto.User;
+import org.example.dto.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.example.service.UserService;
 
 @RestController
 @CrossOrigin
@@ -10,13 +11,15 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/login")
 public class UserController {
 
+    final UserService service;
+
     @PostMapping("/auth/login")
     public boolean login(@RequestBody User user){
-        return false;
+        return service.login(user);
     }
 
     @PostMapping("/register")
     public String register(@RequestBody User user){
-        return "";
+        return service.register(user);
     }
 }
